@@ -74,7 +74,6 @@ func Setup() {
 	//  Db.DB().SetConnMaxLifetime(time.Minute * 5)
 }
 
-// CloseDB closes database connection (unnecessary)
 func CloseDB() {
 	defer Db.Close()
 }
@@ -84,29 +83,33 @@ func GetCustomerName(id int) (customer Customer) {
 	Db.Where("id = ?", id).First(&customer)
 	return
 }
-// retrieve customer name from given id
+// retrieve customer status from given id
 func GetCustomerStatus(id int) (customerStatus CustomerStatus) {
 	Db.Where("id = ?", id).First(&customerStatus)
 	return
 }
 
+// update customer status for given id
 func UpdateCustomerStatus(id int, status string) {
 	Db.Model(&CustomerStatus{}).Where("id = ?", id).Update("status", status)
 	Db.Model(&CustomerStatus{}).Where("id = ?", id).Update("created_at", time.Now())
 	return
 }
 
+// insert customer status for given id
 func InsertCustomerStatus(id int, status string) {
 	customerStatus := CustomerStatus{ID: id, Status: status, CreatedAt: time.Now()}
 	Db.Create(&customerStatus)
 	return
 }
 
+// get chat template for chatbot response message
 func GetChatTemplate(template_type string) (chat_template ChatTemplate) {
 	Db.Where("template_type = ?", template_type).First(&chat_template)
 	return
 }
 
+// create and save a review record for the conversation between customer and chatbot
 func PostReview(customer_id int, template_id int, received_message string, returned_message string) {
 	review := Reviews{CustomerID: customer_id, TemplateID: template_id, ReceivedMessage: received_message, ReturnedMessage: returned_message, CreatedAt: time.Now()}
 	Db.Create(&review)

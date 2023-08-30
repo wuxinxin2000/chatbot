@@ -6,8 +6,6 @@ import (
 	"strings"
 
 	"github.com/gin-gonic/gin"
-	// "github.com/astaxie/beego/validation"
-	// "strconv"
 	"chatbot/models"
 )
 
@@ -36,13 +34,8 @@ func getReview(c *gin.Context)  {
 	var chat_template models.ChatTemplate
 	c.BindJSON(&req_info)
 	// retrieve customer name from db by using the given id
-	customer = models.GetCustomerName(req_info.ID)	//strconv.Atoi()
-	customer_status = models.GetCustomerStatus(req_info.ID)	//strconv.Atoi()
-	// valid := validation.Validation{}
-	// valid.Required(name, "name").Message("name must be not null")
-	// valid.MaxSize(name, 100, "name").Message("name must be within 100 characters")
-	// if ! valid.HasErrors() {
-	// }
+	customer = models.GetCustomerName(req_info.ID)
+	customer_status = models.GetCustomerStatus(req_info.ID)
 
 	// retrieve template body message
 	if strings.Contains(req_info.Message, "thanks") || strings.Contains(req_info.Message, "thank") {
@@ -70,13 +63,6 @@ func getReview(c *gin.Context)  {
 	models.PostReview(customer.ID, chat_template.TemplateID, req_info.Message, returned_message)
   c.IndentedJSON(http.StatusOK, gin.H{"message": returned_message, })
 
-	// data := make(map[string]interface{})
-	// data["customer_id"] = req_info.ID
-	// data["customer_name"] = customer.Name
-	// data["response_message"] = returned_message
-
-  // c.IndentedJSON(http.StatusOK, gin.H{"message": returned_message, 
-  //       "data" : data,})
 }
 
 func followup(c *gin.Context)  {

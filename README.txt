@@ -18,4 +18,8 @@ $ curl -X POST localhost:8000/followup -H 'Content-Type: application/json' -d '{
 
 
 4. code structures:
-models directory has the scripts helping setup db, and the code interact with db;
+models/:  includes the scripts helping setup db, and the code interact with db;
+routers/: includes the logic for handling the http requests
+setting/: includes a chatbot.ini file saving db and http server settings, a setting.go file having the logic to load .ini setting
+main.go:  contains the main logic of starting a chatbot server
+
