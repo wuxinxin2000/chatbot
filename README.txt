@@ -1,9 +1,11 @@
+This chatbot implements some simple function to reply customer with predefined messages when receiving certain messages.
+
 1. Setup Database with below 2 commands(password is empty):
 $ mysql -uroot -p < ./models/init_tables.sql 
 $ mysql -uroot -p < ./models/init_test_data.sql  
 
 2. Start chatbot
-Go to chatbot directory, and see main.go in it, then run below command:
+Go to chatbot directory, and check whether there is file main.go, then run below command to start the chatbot server:
 $ go run main.go
 
 3. Interact with chatbot by using below curl commands:
