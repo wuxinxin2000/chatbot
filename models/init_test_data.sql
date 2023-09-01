@@ -13,4 +13,4 @@ INSERT INTO chat_templates (template_name, template_type, template_body) VALUES 
 INSERT INTO chat_templates (template_name, template_type, template_body) VALUES ('need_feedback', 'need_feedback', 'Please feel free to leave your feedback to help us serve you better. Any feedback is appreciated! Thank you!');
 INSERT INTO chat_templates (template_name, template_type, template_body) VALUES ('received_feedback', 'received_feedback', 'Thanks for your precious feedback to our products!');
 
--- reviews table's data should be inserted on the fly when handling the triggered request.
+-- Data in both chats table and customer_statuses should be inserted on the fly when handling the triggered request.

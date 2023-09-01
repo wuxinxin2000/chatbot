@@ -9,14 +9,24 @@ Go to chatbot directory, and check whether there is file main.go, then run below
 $ go run main.go
 
 3. Interact with chatbot by using below curl commands:
-$ curl -X POST localhost:8000/review/ -H 'Content-Type: application/json' -d '{"message":"","id":3}'
-$ curl -X POST localhost:8000/review/ -H 'Content-Type: application/json' -d '{"message":"I would like to subscribe service from connectly.ai","id":3}'
-$ curl -X POST localhost:8000/review/ -H 'Content-Type: application/json' -d '{"message":"I would like to know more about connectly.ai","id":3}'
-$ curl -X POST localhost:8000/review/ -H 'Content-Type: application/json' -d '{"message":"I would like to give feedback about your product","id":3}'
-$ curl -X POST localhost:8000/review/ -H 'Content-Type: application/json' -d '{"message":"I like your service","id":3}' 
-$ curl -X POST localhost:8000/review/ -H 'Content-Type: application/json' -d '{"message":"thanks","id":3}'
+$ curl -X POST localhost:8000/chats/review/ -H 'Content-Type: application/json' -d '{"message":"","customer_id":3}'
+$ curl -X POST localhost:8000/chats/review/ -H 'Content-Type: application/json' -d '{"message":"I would like to subscribe service from connectly.ai","customer_id":3,"chat_id": "USE_THE_chat_id_GOT_FROM_ABOVE_HTTP_REQUEST"}'
+$ curl -X POST localhost:8000/chats/review/ -H 'Content-Type: application/json' -d '{"message":"I would like to know more about connectly.ai","customer_id":3,"chat_id": "USE_THE_chat_id_GOT_FROM_ABOVE_HTTP_REQUEST"}'
+$ curl -X POST localhost:8000/chats/review/ -H 'Content-Type: application/json' -d '{"message":"I would like to give feedback about your product","customer_id":3,"chat_id": "USE_THE_chat_id_GOT_FROM_ABOVE_HTTP_REQUEST"}'
+$ curl -X POST localhost:8000/chats/review/ -H 'Content-Type: application/json' -d '{"message":"I like your service","customer_id":3,"chat_id": "USE_THE_chat_id_GOT_FROM_ABOVE_HTTP_REQUEST"}' 
+$ curl -X POST localhost:8000/chats/review/ -H 'Content-Type: application/json' -d '{"message":"thanks","customer_id":3,"chat_id": "USE_THE_chat_id_GOT_FROM_ABOVE_HTTP_REQUEST"}'
 
-$ curl -X POST localhost:8000/followup -H 'Content-Type: application/json' -d '{"message":"","id":2}'
+$ curl -X POST localhost:8000/chats/followup -H 'Content-Type: application/json' -d '{"message":"","customer_id":2}'
+
+eg:
+$ curl -X POST localhost:8000/chats/review/ -H 'Content-Type: application/json' -d '{"message":"","customer_id":3}'
+$ curl -X POST localhost:8000/chats/review/ -H 'Content-Type: application/json' -d '{"message":"I would like to subscribe service from connectly.ai","customer_id":3,"chat_id": "B0B80DD1-94E4-4473-8C96-5283B4273BDC"}'
+$ curl -X POST localhost:8000/chats/review/ -H 'Content-Type: application/json' -d '{"message":"I would like to know more about connectly.ai","customer_id":3,"chat_id": "B0B80DD1-94E4-4473-8C96-5283B4273BDC"}'
+$ curl -X POST localhost:8000/chats/review/ -H 'Content-Type: application/json' -d '{"message":"I would like to give feedback about your product","customer_id":3,"chat_id": "B0B80DD1-94E4-4473-8C96-5283B4273BDC"}'
+$ curl -X POST localhost:8000/chats/review/ -H 'Content-Type: application/json' -d '{"message":"I like your service","customer_id":3,"chat_id": "B0B80DD1-94E4-4473-8C96-5283B4273BDC"}' 
+$ curl -X POST localhost:8000/chats/review/ -H 'Content-Type: application/json' -d '{"message":"thanks","customer_id":3,"chat_id": "B0B80DD1-94E4-4473-8C96-5283B4273BDC"}'
+
+$ curl -X POST localhost:8000/chats/followup -H 'Content-Type: application/json' -d '{"message":"","customer_id":2}'
 
 
 4. code structures:

@@ -38,10 +38,11 @@ type ChatTemplate struct {
 	CreatedAt  time.Time `json:"created_at"`
 }
 
-type Reviews struct {
-	ReviewID		int `gorm:"primary_key;AUTO_INCREMENT" json:"review_id"`
-  CustomerID int `gorm:"not null" json:"customer_id"` 
-  TemplateID int `gorm:"not null" json:"template_id"` 
+type Chats struct {
+	RecordID		int `gorm:"primary_key;AUTO_INCREMENT" json:"record_id"`
+	ChatID		string `gorm:"not null" json:"chat_id"`
+  CustomerID	int `gorm:"not null" json:"customer_id"` 
+  TemplateID	int `gorm:"not null" json:"template_id"` 
 	ReceivedMessage string `json:"received_message"`
   ReturnedMessage string `json:"returned_message"`
 	CreatedAt  time.Time `json:"created_at"`
@@ -110,7 +111,7 @@ func GetChatTemplate(template_type string) (chat_template ChatTemplate) {
 }
 
 // create and save a review record for the conversation between customer and chatbot
-func PostReview(customer_id int, template_id int, received_message string, returned_message string) {
-	review := Reviews{CustomerID: customer_id, TemplateID: template_id, ReceivedMessage: received_message, ReturnedMessage: returned_message, CreatedAt: time.Now()}
-	Db.Create(&review)
+func PostChat(chat_id string, customer_id int, template_id int, received_message string, returned_message string) {
+	chat := Chats{ChatID: chat_id, CustomerID: customer_id, TemplateID: template_id, ReceivedMessage: received_message, ReturnedMessage: returned_message, CreatedAt: time.Now()}
+	Db.Create(&chat)
 }

@@ -1,6 +1,6 @@
 create database if not exists chatbotdb;
 use chatbotdb;
-drop table if exists customers, customer_infos, customer_statuss, chat_templates, reviews;
+drop table if exists customers, customer_infos, customer_statuss, chat_templates, chats, reviews, customer;
 create table if not exists customers (
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, 
   name VARCHAR(100) NOT NULL, 
@@ -20,8 +20,9 @@ create table if not exists chat_templates (
   template_body TEXT,
   created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
-create table if not exists reviews (
-  review_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+create table if not exists chats (
+  record_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  chat_id VARCHAR(36) NOT NULL,
   customer_id INT NOT NULL,
   template_id INT NOT NULL,
   received_message TEXT,
