@@ -1,1 +1,3 @@
 test.go
+clients/secrets.go
+secrets.go

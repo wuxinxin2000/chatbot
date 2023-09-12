@@ -20,14 +20,13 @@ $ curl -X POST localhost:8000/chats/followup -H 'Content-Type: application/json'
 
 eg:
 $ curl -X POST localhost:8000/chats/review/ -H 'Content-Type: application/json' -d '{"message":"","customer_id":3}'
-$ curl -X POST localhost:8000/chats/review/ -H 'Content-Type: application/json' -d '{"message":"I would like to subscribe service from connectly.ai","customer_id":3,"chat_id": "B0B80DD1-94E4-4473-8C96-5283B4273BDC"}'
-$ curl -X POST localhost:8000/chats/review/ -H 'Content-Type: application/json' -d '{"message":"I would like to know more about connectly.ai","customer_id":3,"chat_id": "B0B80DD1-94E4-4473-8C96-5283B4273BDC"}'
-$ curl -X POST localhost:8000/chats/review/ -H 'Content-Type: application/json' -d '{"message":"I would like to give feedback about your product","customer_id":3,"chat_id": "B0B80DD1-94E4-4473-8C96-5283B4273BDC"}'
-$ curl -X POST localhost:8000/chats/review/ -H 'Content-Type: application/json' -d '{"message":"I like your service","customer_id":3,"chat_id": "B0B80DD1-94E4-4473-8C96-5283B4273BDC"}' 
-$ curl -X POST localhost:8000/chats/review/ -H 'Content-Type: application/json' -d '{"message":"thanks","customer_id":3,"chat_id": "B0B80DD1-94E4-4473-8C96-5283B4273BDC"}'
+$ curl -X POST localhost:8000/chats/review/ -H 'Content-Type: application/json' -d '{"message":"I would like to subscribe service from connectly.ai","customer_id":2,"chat_id": "3E5B2C43-0DE7-4ACB-83AD-C630BA29FFAA"}'
+$ curl -X POST localhost:8000/chats/review/ -H 'Content-Type: application/json' -d '{"message":"I would like to know more about connectly.ai","customer_id":2,"chat_id": "3E5B2C43-0DE7-4ACB-83AD-C630BA29FFAA"}'
+$ curl -X POST localhost:8000/chats/review/ -H 'Content-Type: application/json' -d '{"message":"I would like to give feedback about your product","customer_id":2,"chat_id": "3E5B2C43-0DE7-4ACB-83AD-C630BA29FFAA"}'
+$ curl -X POST localhost:8000/chats/review/ -H 'Content-Type: application/json' -d '{"message":"I like your service","customer_id":2,"chat_id": "3E5B2C43-0DE7-4ACB-83AD-C630BA29FFAA"}' 
+$ curl -X POST localhost:8000/chats/review/ -H 'Content-Type: application/json' -d '{"message":"thanks","customer_id":2,"chat_id": "3E5B2C43-0DE7-4ACB-83AD-C630BA29FFAA"}'
 
 $ curl -X POST localhost:8000/chats/followup -H 'Content-Type: application/json' -d '{"message":"","customer_id":2}'
-
 
 4. code structures:
 models/:  includes the scripts helping setup db, and the code interact with db;

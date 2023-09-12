@@ -8,19 +8,19 @@ import (
 
 	_ "github.com/go-sql-driver/mysql"
 
+	"chatbot/clients"
 	"chatbot/models"
-	"chatbot/routers"
 	"chatbot/setting"
 )
 
 func init() {
-	setting.Setup()
+	setting.Setup("setting/chatbot.ini")
 	models.Setup()
 }
 
 
 func main() {
-	 routersInit := routers.InitRouter()
+	 routersInit := clients.InitRouter()
 	 readTimeout := setting.ServerSetting.ReadTimeout
 	 writeTimeout := setting.ServerSetting.WriteTimeout
 	 endPoint := fmt.Sprintf(":%d", setting.ServerSetting.HttpPort)

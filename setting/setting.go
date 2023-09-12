@@ -28,9 +28,9 @@ type Database struct {
 
 var DatabaseSetting = &Database{}
 
-func Setup() {
+func Setup(filename string) {
 	var err error
-	cfg, err = ini.Load("setting/chatbot.ini")
+	cfg, err = ini.Load(filename)
 	if err != nil {
 		log.Fatalf("settting.Setup, fail to parse 'setting/chatbot.ini': %v", err)
 	}

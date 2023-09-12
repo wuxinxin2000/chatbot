@@ -40,7 +40,7 @@ type ChatTemplate struct {
 
 type Chats struct {
 	RecordID		int `gorm:"primary_key;AUTO_INCREMENT" json:"record_id"`
-	ChatID		string `gorm:"not null" json:"chat_id"`
+	ChatID		string `gorm:"not null" json:"chat_id"`	// track all the conversations within one chat thread
   CustomerID	int `gorm:"not null" json:"customer_id"` 
   TemplateID	int `gorm:"not null" json:"template_id"` 
 	ReceivedMessage string `json:"received_message"`
@@ -110,7 +110,22 @@ func GetChatTemplate(template_type string) (chat_template ChatTemplate) {
 	return
 }
 
-// create and save a review record for the conversation between customer and chatbot
+type ChatMessage struct { 
+	ReceivedMessage string `json:"received_message"`
+  ReturnedMessage string `json:"returned_message"`
+}
+
+func GetChatMessages(customer_id int, chat_id string) ([]Chats, error) {
+	var chat_msgs []Chats
+	
+	result := Db.Table("chats").Select([]string{"received_message", "returned_message"}).Where("customer_id = ?", customer_id).Where("chat_id = ?", chat_id).Find(&chat_msgs)
+    if result.Error != nil {
+        return nil, result.Error
+    }
+    return chat_msgs, nil
+}
+
+// create and save a chat record for the conversation between customer and chatbot
 func PostChat(chat_id string, customer_id int, template_id int, received_message string, returned_message string) {
 	chat := Chats{ChatID: chat_id, CustomerID: customer_id, TemplateID: template_id, ReceivedMessage: received_message, ReturnedMessage: returned_message, CreatedAt: time.Now()}
 	Db.Create(&chat)

@@ -1,6 +1,6 @@
 create database if not exists chatbotdb;
 use chatbotdb;
-drop table if exists customers, customer_infos, customer_statuss, chat_templates, chats, reviews, customer;
+drop table if exists customers, customer_statuses, chat_templates, chats, reviews, customer, customer_statuss, customer_infos;
 create table if not exists customers (
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, 
   name VARCHAR(100) NOT NULL, 
